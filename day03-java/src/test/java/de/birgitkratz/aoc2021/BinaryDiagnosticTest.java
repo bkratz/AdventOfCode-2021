@@ -36,6 +36,12 @@ class BinaryDiagnosticTest {
     void calculatePowerConsumption() {
         assertThat(binaryDiagnostic.calculatePowerConsumption(testInput)).isEqualTo(198);
     }
+
+    @Test
+    void calculateLifeSupportRating() {
+        assertThat(binaryDiagnostic.calculateLifeSupportRating(testInput)).isEqualTo(230);
+    }
+
     @Test
     void sumAtIndex() {
         final var ints = List.of(new int[] {0, 0, 1, 0, 0},
@@ -47,12 +53,26 @@ class BinaryDiagnosticTest {
     }
 
     @Test
+    void findOxygenGeneratorRating() {
+        assertThat(binaryDiagnostic.findOxygenGeneratorRatingBinaryString(testInput.toList())).isEqualTo("10111");
+    }
+
+    @Test
+    void findCO2ScrubberRating() {
+        assertThat(binaryDiagnostic.findCO2ScrubberRatingBinaryString(testInput.toList())).isEqualTo("01010");
+    }
+
+    @Test
     void calculateGammaRatePuzzleInput() throws URISyntaxException, IOException {
         assertThat(binaryDiagnostic.calculateGammeRateBinaryString(parsePuzzleInput())).isEqualTo("101000000110");
     }
     @Test
     void calculatePowerConsumptionPuzzleInput() throws URISyntaxException, IOException {
         assertThat(binaryDiagnostic.calculatePowerConsumption(parsePuzzleInput())).isEqualTo(3923414);
+    }
+    @Test
+    void calculateLifeSupportRatingPuzzleInput() throws URISyntaxException, IOException {
+        assertThat(binaryDiagnostic.calculateLifeSupportRating(parsePuzzleInput())).isEqualTo(5852595);
     }
 
     private Stream<String> parsePuzzleInput() throws URISyntaxException, IOException {
