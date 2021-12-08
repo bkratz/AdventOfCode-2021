@@ -1,5 +1,6 @@
 package de.birgitkratz.aoc2021;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -8,12 +9,12 @@ import java.util.stream.Stream;
 public class BinaryDiagnostic {
 
     public String calculateGammeRateBinaryString(final Stream<String> input) {
-        final var integerArrayList = input.map(this::parseBinaryStringToArayOfInteger).toList();
+        final var integerArrayList = input.map(this::parseBinaryStringToArrayOfInteger).toList();
 
         return IntStream.range(0, integerArrayList.get(0).length)
                 .mapToObj(i -> {
                     final var sum = sumAtIndex(integerArrayList, i);
-                    if (integerArrayList.size() - sum < sum) {
+                    if (sum > (integerArrayList.size() - sum)) {
                         return "1";
                     }
                     return "0";
@@ -21,11 +22,9 @@ public class BinaryDiagnostic {
                 .collect(Collectors.joining());
     }
 
-    private int[] parseBinaryStringToArayOfInteger(final String s) {
-        final var parsedInteger = Integer.parseInt(s, 2);
-        return IntStream.range(0, s.length())
-                .map(i -> s.length() - i - 1)
-                .map(i -> (parsedInteger >> i) & 1)
+    private int[] parseBinaryStringToArrayOfInteger(final String input) {
+        return Arrays.stream(input.split(""))
+                .mapToInt(s -> Integer.parseInt(s))
                 .toArray();
     }
 
@@ -53,9 +52,9 @@ public class BinaryDiagnostic {
         int index = 0;
         while (input.size() > 1) {
             final var integerArrayList =
-                    input.stream().map(this::parseBinaryStringToArayOfInteger).toList();
+                    input.stream().map(this::parseBinaryStringToArrayOfInteger).toList();
             final var sum = sumAtIndex(integerArrayList, index);
-            if (integerArrayList.size()-sum <= sum) {
+            if (sum >= (integerArrayList.size()-sum)) {
                 filterString += "1";
             } else {
                 filterString += "0";
@@ -73,9 +72,9 @@ public class BinaryDiagnostic {
         int index = 0;
         while (input.size() > 1) {
             final var integerArrayList =
-                    input.stream().map(this::parseBinaryStringToArayOfInteger).toList();
+                    input.stream().map(this::parseBinaryStringToArrayOfInteger).toList();
             final var sum = sumAtIndex(integerArrayList, index);
-            if (integerArrayList.size()-sum <= sum) {
+            if (sum >= (integerArrayList.size()-sum)) {
                 filterString += "0";
             } else {
                 filterString += "1";
