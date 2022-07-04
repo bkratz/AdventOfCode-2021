@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class BinaryDiagnostic {
 
-    public String calculateGammeRateBinaryString(final Stream<String> input) {
+    public String calculateGammaRateBinaryString(final Stream<String> input) {
         final var integerArrayList = input.map(this::parseBinaryStringToArrayOfInteger).toList();
 
         return IntStream.range(0, integerArrayList.get(0).length)
@@ -34,7 +34,7 @@ public class BinaryDiagnostic {
     }
 
     public int calculatePowerConsumption(final Stream<String> input) {
-        final var gammaRateBinaryString = calculateGammeRateBinaryString(input);
+        final var gammaRateBinaryString = calculateGammaRateBinaryString(input);
         final var gammaRate = Integer.parseInt(gammaRateBinaryString, 2);
 
         // find value to XOR gammaRate with

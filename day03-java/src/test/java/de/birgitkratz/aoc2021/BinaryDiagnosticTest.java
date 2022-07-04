@@ -29,13 +29,14 @@ class BinaryDiagnosticTest {
                     "01010");
     @Test
     void calculateGammaRate() {
-        assertThat(binaryDiagnostic.calculateGammeRateBinaryString(testInput)).isEqualTo("10110");
+        assertThat(binaryDiagnostic.calculateGammaRateBinaryString(testInput)).isEqualTo("10110");
     }
 
     @Test
     void calculatePowerConsumption() {
         assertThat(binaryDiagnostic.calculatePowerConsumption(testInput)).isEqualTo(198);
     }
+
 
     @Test
     void calculateLifeSupportRating() {
@@ -64,7 +65,7 @@ class BinaryDiagnosticTest {
 
     @Test
     void calculateGammaRatePuzzleInput() throws URISyntaxException, IOException {
-        assertThat(binaryDiagnostic.calculateGammeRateBinaryString(parsePuzzleInput())).isEqualTo("101000000110");
+        assertThat(binaryDiagnostic.calculateGammaRateBinaryString(parsePuzzleInput())).isEqualTo("101000000110");
     }
     @Test
     void calculatePowerConsumptionPuzzleInput() throws URISyntaxException, IOException {
